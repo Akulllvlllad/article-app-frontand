@@ -1,0 +1,74 @@
+@import '../variables.scss';
+
+
+._container{
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+
+.header{
+	background-color: var(--bc-Main);
+	padding: 20px 0;
+	&_container{
+
+	}
+	&_content{
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		
+	}
+	&_logo{
+		font-size: 50px;
+		animation: circling 2s linear infinite normal 0s none;
+	}
+	@keyframes circling {
+		0%{
+			transform: rotate(0deg);
+		}
+		100%{
+			transform: rotate(360deg);
+
+		}
+	}
+
+}
+
+
+.menu{
+	display: flex;
+	align-items: center;
+	gap:20px;
+}
+				
+
+._btn{
+	padding: 15px 20px;
+	font-weight: 800;
+	font-size: 24px;
+	background-color: var(--btn-main);
+	border: none;
+	border-radius: 10px;
+	color: var(--text-main);
+	cursor: pointer;
+	opacity: 0.85;
+	&:hover{
+		opacity: 1;
+	}
+	&:active{
+		opacity: 0.6;
+	}
+}
+		
+.logIn{
+	padding: 15px 20px;
+	font-weight: 800;
+	font-size: 24px;
+	color: var(--text-main);
+	
+}
+
+
+
+
