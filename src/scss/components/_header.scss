@@ -1,15 +1,13 @@
 @import '../variables.scss';
 
 
-._container{
-	max-width: 1200px;
-	margin: 0 auto;
-}
+
 
 
 .header{
-	background-color: var(--bc-Main);
+	background-color: var(--bc-Header);
 	padding: 20px 0;
+	box-shadow: 0px 15px 15px rgb(42, 41, 41);
 	&_container{
 
 	}
@@ -20,6 +18,7 @@
 		
 	}
 	&_logo{
+		padding: 0 10px;
 		font-size: 50px;
 		animation: circling 2s linear infinite normal 0s none;
 	}
@@ -28,7 +27,7 @@
 			transform: rotate(0deg);
 		}
 		100%{
-			transform: rotate(360deg);
+			transform: rotate(-360deg);
 
 		}
 	}
@@ -52,13 +51,8 @@
 	border-radius: 10px;
 	color: var(--text-main);
 	cursor: pointer;
-	opacity: 0.85;
-	&:hover{
-		opacity: 1;
-	}
-	&:active{
-		opacity: 0.6;
-	}
+	box-shadow: -5px 5px 5px rgb(42, 41, 41);
+	
 }
 		
 .logIn{
@@ -66,7 +60,7 @@
 	font-weight: 800;
 	font-size: 24px;
 	color: var(--text-main);
-	
+	cursor: pointer;
 }
 
 
