@@ -1,6 +1,7 @@
 import React from 'react'
 import { useForm } from 'react-hook-form'
-
+import cn from 'classnames'
+import { useActions } from '../hooks/useHooks'
 
 export const Login = React.memo(({ setLPopup }) => {
 	const [current, setCurrent] = React.useState(false)
@@ -50,18 +51,45 @@ export const Login = React.memo(({ setLPopup }) => {
 })
 
 const LogIn = ({setCurrent}) => {
+	const {fetchAuth} = useActions()
 	const {
 		register,
 		handleSubmit,
+		setError,
 		formState: { errors },
-	} = useForm()
-	const onSubmit = data => console.log(data)
+	} = useForm({
+		defaultValues: {
+			email: 'tes2t@mail.ru',
+			password: '12345',
+		},
+		mode: 'onChange',
+	})
+	
+	const onSubmit = data => {
+		fetchAuth(data)
+		console.log(data)}
 	return (
 		<div className='login_content'>
 			<h2 className='login_title'>Войти</h2>
 			<form className='login_form' onSubmit={handleSubmit(onSubmit)}>
-				<input placeholder='email' className='input' {...register('one')} />
-				<input placeholder='password' className='input' {...register('two')} />
+				<input
+					placeholder='email'
+					className={cn('input', { errors: errors.email })}
+					{...register('email', {
+						required: 'Укажите почту',
+					})}
+				/>
+				{errors.email && <p className='errors-text'>{errors.email?.message}</p>}
+				<input
+					placeholder='password'
+					className={cn('input', { errors: errors.password })}
+					{...register('password', {
+						required: 'Введите пароль',
+					})}
+				/>
+				{errors.password && (
+					<p className='errors-text'>{errors.password?.message}</p>
+				)}
 
 				<button className='input _btn _submit' type='submit'>
 					Отправить

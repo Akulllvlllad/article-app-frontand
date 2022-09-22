@@ -24,11 +24,13 @@
   background-color: #ccc;
   -webkit-transition: .4s;
   transition: .4s;
+  border-radius: 20px;
 }
 
 .slider:before {
   position: absolute;
   content: "";
+  border-radius: 50%;
   height: 26px;
   width: 26px;
   left: 4px;

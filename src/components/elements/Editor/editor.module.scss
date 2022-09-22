@@ -1,0 +1,85 @@
+@import '../../../scss/variables.scss';
+.top {
+	display: flex;
+	flex-direction: column;
+	padding: 40px 15px 0 15px;
+	gap: 10px;
+}
+.title {
+	font-weight: 900;
+}
+
+.input {
+	color: var(--text-main);
+	padding: 10px 20px;
+	font-size: 42px;
+	font-weight: 700;
+	width: 100%;
+	background-color: var(--bc-Main);
+	border: none;
+	border-bottom: 2px var(--editor-toolbar) solid;
+}
+
+.image {
+	width: 100%;
+}
+
+.tags {
+	font-weight: 300;
+	margin: 15px 0;
+}
+.editor {
+	width: 100%;
+	padding: 40px 5px;
+	:global {
+		.cm-s-easymde {
+			border: 0;
+			font-size: 22px;
+			
+		}
+		.editor-toolbar {
+			border: 0;
+			background-color: var(--editor-toolbar);
+			.preview {
+				display: none;
+			}
+			.separator {
+				display: none;
+			}
+			.side-by-side{
+				display: none;
+			}
+			button {
+				color: var(--text-second);
+				font-size: 22px;
+
+				&:hover {
+					border: none;
+					border-radius: 50%;
+				}
+			}
+		}
+		.CodeMirror {
+			color: var(--text-main);
+			background-color: var(--bc-Header);
+			font-size: 46px;
+			
+		}
+	}
+}
+.hidden{
+	display: none;
+}
+.buttons {
+	display: flex;
+	justify-content: space-between;
+	button {
+		margin-right: 15px;
+	}
+}
+
+.uploadBTN{
+	font-size: 20px;
+	max-width: 270px;
+	padding: 10px;
+}

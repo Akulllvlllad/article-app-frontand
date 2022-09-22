@@ -1,19 +1,89 @@
-._container{
+._container {
 	max-width: 1200px;
 	margin: 0 auto;
 }
-._opacity{
+._opacity {
 	opacity: 0.85;
 	transition: all 0.3s ease 0s;
-	&:hover{
+	&:hover {
 		opacity: 1;
 	}
-	&:active{
+	&:active {
 		opacity: 0.6;
 	}
 }
 
-._pointer{
+._pointer {
 	cursor: pointer;
 }
 
+.errors {
+	background-color: rgba(255, 0, 0, 0.236);
+	color: rgb(15, 14, 14);
+	font-weight: 600;
+}
+.errors-text {
+	color: red;
+	font-size: 14px;
+	letter-spacing: 1.2px;
+	font-weight: 600;
+}
+
+.delete_btn {
+	background-color: var(--btn-delete);
+}
+
+.file_ibg {
+	position: relative;
+	width: 100%;
+	height: 480px;
+	@media (max-width: $breakpoint_xl) {
+		height: 420px;
+	}
+	@media (max-width: $breakpoint_md) {
+		height: 350px;
+	}
+	@media (max-width: $breakpoint_sm) {
+		height: 300px;
+	}
+	@media (max-width: $breakpoint_esm) {
+		height: 200px;
+	}
+	img {
+		position: absolute;
+		left: 0;
+		top: 0;
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+	}
+}
+
+.skeleton {
+	border-radius: 20px;
+	
+	background-image: linear-gradient(
+		90deg,
+		var(--bc-Main) 0%,
+		var(--bc-Main) 40%,
+		var(--bc-Header) 50%,
+		var(--bc-Header) 55%,
+		var(--bc-Main) 65%,
+		var(--bc-Main) 100%
+	);
+	background-size: 400%;
+	animation: skeleton 2s infinite;
+}
+@keyframes skeleton {
+	from {
+		background-position: 100%;
+	}
+	to {
+		background-position: 0%;
+	}
+}
+
+.change_btn{
+	background-color: #F5F601;
+	color: black;
+}

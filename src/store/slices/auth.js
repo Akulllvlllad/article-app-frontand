@@ -1,11 +1,24 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit'
-import  axios from 'axios'
+import axios from '../../axios/axios'
 
-export const fetchUserData = createAsyncThunk('auth/fetchUserData', async (params) => {
-	const data = await axios.get('https://articleappkrsc.herokuapp.com/auth/login', params)
-	console.log(data);
+export const fetchAuth = createAsyncThunk('auth/fetchAuth', async params => {
+	const { data } = await axios.post(
+		'/auth/login',
+		params
+	)
+
 	return data
 })
+
+export const fetchMe = createAsyncThunk('auth/fetchMe', async () => {
+	const { data } = await axios.get('/auth/me')
+
+	return data
+})
+
+
+
+
 
 export const authSlice = createSlice({
 	name: 'auth',
@@ -13,25 +26,49 @@ export const authSlice = createSlice({
 		data: null,
 		status: 'loading',
 	},
-	reducers: {},
+	reducers: {
+		logout: state => {
+			state.data = null
+			window.localStorage.removeItem('token')
+		},
+	},
 	extraReducers: {
-		[fetchUserData.pending]: (state, action) => {
+		[fetchAuth.pending]: (state, action) => {
 			state.status = 'loading'
 			state.data = null
 		},
-		[fetchUserData.fulfilled]: (state, action) => {
+		[fetchAuth.fulfilled]: (state, action) => {
 			state.data = action.payload
 			state.status = 'loaded'
+			if ('token' in action.payload) {
+				window.localStorage.setItem('token', action.payload.token)
+			}
 		},
-		[fetchUserData.rejected]: (state, action) => {
+		[fetchAuth.rejected]: (state, action) => {
+			state.data = null
+			state.status = 'error'
+		},
+
+		[fetchMe.pending]: (state, action) => {
+			state.status = 'loading'
+			state.data = null
+		},
+		[fetchMe.fulfilled]: (state, action) => {
+			state.data = action.payload
+			state.status = 'loaded'
+
+		},
+		[fetchMe.rejected]: (state, action) => {
 			state.data = null
 			state.status = 'error'
 		},
 	},
 })
 
+export const { logout } = authSlice.actions
 
+export const selectIsAuth = state => Boolean(state.auth.data)
+export const selectIsLoading = state => Boolean(state.auth.status === 'loading')
 
-//export const {} = loginSlice.actions
 
 export default authSlice.reducer

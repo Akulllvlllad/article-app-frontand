@@ -10,13 +10,23 @@ html[data-theme = 'dart']{
 	--bc-Header: #3b4252;
 
 	--text-main: #F0F6FC;
-
+	--text-second: #02285e;
+	--tags-main:#4d96fd ;
 	--btn-main: #238636;
+	--btn-delete:red;
+	--editor-toolbar:#238637;
 }
 
 /*       LIGHT THEME       */
 html[data-theme = 'light']{
-	--bc-Main: #2e4030;
-	--bc-Header: #3b4252;
+	--bc-Main: #253a4f;
+	--bc-Header: #0077FF;
+
+	--text-main:#ffffff;
+	--text-second:  #3b4252;
+
+	--btn-main: rgb(201, 76, 212);
+	--btn-delete:red;
+	--editor-toolbar:rgb(201, 76, 212);
 }
 
